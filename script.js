@@ -35,7 +35,7 @@ myGame.botAction('respond', 'Send a text response to the user', { message: 'What
 
   document.body.style.backgroundColor = `rgba(0, 0, 0, ${data.currentVariables.scaredLevel.value / 50})`
 
-  document.getElementById('scare').innerHTML
+  document.getElementById('scare').innerHTML = data.currentVariables.scare.value
   
 })
 
