@@ -4,22 +4,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Our Game</title>
+  <title>Finish the game jam</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <p>Your job is to escape from the haunted house.</p>
+  <p>Your job is to finish your game for the game jam. It's due tomorrow, and you've barely started. </p>
   <div id="conversation">
   </div>
-
+  <img src="typing.gif" alt="ai is thinking" id="typing" height="25vh" style="display: none;">
   <textarea id="input" placeholder="Type here..."></textarea>
   <br>
   <i>Press enter to submit...</i>
 
-  <p>Score: <span id="score">0</span></p>
-  <p>Scare level: <span id="scare">0</span></p>
-
+  <p>Completion percent: <span id="completion">0</span>%</p>
+  <p>Time left: <span id="timeLeft">24</span>h</p>
   <script src="https://wizard-orpheus.hackclub.dev/wizard_orpheus.js"></script>
   <script src="script.js"></script>
 </body>
