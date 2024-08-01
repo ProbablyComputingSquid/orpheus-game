@@ -10,7 +10,7 @@ The user is trying to complete their game for the Official JoshCo Game Jam. They
 // initialize game variables
 myGame.variable('completion', 'How complete the user\'s game for the game jam is. From 0 (not even started) to 100 (fully complete)', 0)
 
-myGame.variable('timeLeft', 'How much time (in hours) the user has until the game jam is over. Decreases when user spends time doing things. From 24 (just started) to 0 (submission time)')
+myGame.variable('timeLeft', 'How much time (in hours) the user has until the game jam is over. Decreases when user spends time doing things. From 24 (just started) to 0 (submission time)', 24)
 
 // my code is self-documenting
 myGame.createUserAction({
@@ -19,8 +19,8 @@ myGame.createUserAction({
   howBotShouldHandle: 'Respond to the user'
 })
 
-document.getElementById('input').addEventListener('keyup', function(e) {
-  if (e.code == 'Enter') { // if the user presses enter
+document.getElementById('input').addEventListener('keydown', function(e) {
+  if (e.code == 'Enter' && document.getElementById('input').value.trim() != "") { // if the user presses enter and there is content
     let userInput = document.getElementById('input').value;
     myGame.message(userInput);
 
@@ -28,13 +28,17 @@ document.getElementById('input').addEventListener('keyup', function(e) {
 
     document.getElementById('input').value = '';
     document.getElementById('typing').style = "diplay: block;"
+    
+  } else if (e.code == 'Enter' && document.getElementById('input').value.trim() == "") { // block empty input
+    alert("your game won't finish itself!, do something!")
+    document.getElementById('input').value = '';
   }
 })
 
 myGame.botAction('respond', 'Send a text response to the user', { message: 'What you want to say to the user' }, data => {
   // Add the bot's response to the conversation
   document.getElementById('conversation').innerHTML += '<p>' + data.message + '</p>'
-  document.getElementById('typing').style = "diplay: none;"
+  document.getElementById('typing').style = "display: none;"
   
   document.getElementById('completion').innerHTML = data.currentVariables.completion.value
   document.getElementById('timeLeft').innerHTML = data.currentVariables.timeLeft.value
